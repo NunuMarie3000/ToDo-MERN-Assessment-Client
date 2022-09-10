@@ -28,7 +28,9 @@ body{
     border-style: none;
     border-bottom: 2px solid rgba(0, 0, 0, 0.3);
     border-radius: 0;
-    background-color:rgba(255, 255, 255, 0);
+  }
+  .form-contraol:enabled{
+    background-color: rgba(255, 176, 189, 0.5);
   }
   
   .form-control:disabled{
@@ -45,6 +47,9 @@ body{
     align-items: center;
     justify-content: space-between;
     transition: all .25s;
+  }
+  .todo > form > .form-control{
+    background-color: rgba(255, 176, 189, 0)
   }
   .todo > div{
     opacity: 0;

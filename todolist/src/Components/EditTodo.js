@@ -1,15 +1,10 @@
 import React from 'react'
 
-export default function EditTodo({ updatedTodo, setIsDisabled, isDisabled}) {
+export default function EditTodo({ setIsDisabled, isDisabled}) {
 
   const click = () => {
     setIsDisabled(!isDisabled)
-    if(isDisabled && updatedTodo !== ''){
-      console.log(true, updatedTodo)
-    }
   }
-
-  
 
   return (
     <>
