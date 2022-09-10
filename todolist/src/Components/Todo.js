@@ -19,7 +19,6 @@ export default function Todo({ id, todo, getAllTodos, isCompleteOG }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    // const url = `http://localhost:3001/todos/${id}`
     const url = `${process.env.REACT_APP_SERVER}todos/${id}`
     const request = { "todo": updatedTodo, "isComplete": isComplete }
     try {

@@ -10,7 +10,6 @@ export default function RenderTodos() {
   let [todosLeft, setTodosLeft] = useState(0)
 
   const getAllTodos = async () => {
-    // const url = 'http://localhost:3001/todos'
     const url = `${process.env.REACT_APP_SERVER}todos`
     try {
       const response = await axios.get(url)
@@ -38,7 +37,7 @@ export default function RenderTodos() {
         <AddTodo getAllTodos={getAllTodos} />
 
         {searchedTodos !== '' && <h3 style={{fontFamily:"'Life Savers', cursive", paddingBottom:'1rem'}}>{todosLeft} todos left</h3>}
-        <Filter getAllTodos={getAllTodos} setTodosLeft={setTodosLeft} allTodos={allTodos} setSearched={setSearched}/>
+        <Filter todosLeft={todosLeft} setTodosLeft={setTodosLeft} allTodos={allTodos} setSearched={setSearched} searchedTodos={searchedTodos} />
 
         <div>
           {searchedTodos !== '' && searchedTodos.map(todo =>

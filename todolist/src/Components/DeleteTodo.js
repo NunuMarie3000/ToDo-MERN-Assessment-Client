@@ -4,7 +4,6 @@ import axios from 'axios'
 export default function DeleteTodo({id, getAllTodos}) {
 
   const deleteTodo = async (id) => {
-    // const url = `http://localhost:3001/todos/${id}`
     const url = `${process.env.REACT_APP_SERVER}todos/${id}`
     try {
       await axios.delete(url)

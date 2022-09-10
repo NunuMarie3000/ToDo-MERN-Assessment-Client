@@ -13,20 +13,20 @@ export default function Filter({ setSearched, allTodos, setTodosLeft }) {
     let todos
     if (selection === 'done') {
       todos = allTodos.filter(todo => todo.isComplete === true)
-      setSearched(todos)
       setTodosLeft(allTodos.length - todos.length)
+      setSearched(todos)
     } else if (selection === 'active') {
       todos = allTodos.filter(todo => todo.isComplete === false)
-      setSearched(todos)
       setTodosLeft(todos.length)
+      setSearched(todos)
     } else {
       todos = allTodos
       setSearched(todos)
     }
   }
   return (
-    <>
-      <Form onChange={handleChange} style={{ display: 'flex', gap:'1rem', fontSize:'20px', fontFamily: "'Life Savers', cursive" }}>
+    <div style={{ display: 'flex', justifyContent:'space-between' }}>
+      <Form onChange={handleChange} style={{ display: 'flex', gap: '1rem', fontSize: '20px', fontFamily: "'Life Savers', cursive" }}>
         <Form.Group className="mb-3" controlId="all">
           <Form.Check name='filter' onChange={() => {
             setChecked({
@@ -38,23 +38,25 @@ export default function Filter({ setSearched, allTodos, setTodosLeft }) {
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="active">
-          <Form.Check name='filter' onChange={() => { 
+          <Form.Check name='filter' onChange={() => {
             setChecked({
               all: false,
               active: !checked.active,
               done: false
-            }) }} checked={checked.active} type="radio" label="Active" />
+            })
+          }} checked={checked.active} type="radio" label="Active" />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="done">
-          <Form.Check name='filter' onChange={() => { 
+          <Form.Check name='filter' onChange={() => {
             setChecked({
               all: false,
               active: false,
               done: !checked.done
-            })}} checked={checked.done} type="radio" label="Done" />
+            })
+          }} checked={checked.done} type="radio" label="Done" />
         </Form.Group>
       </Form>
-    </>
+    </div>
   )
 }
