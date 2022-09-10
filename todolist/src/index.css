@@ -1,0 +1,72 @@
+body{
+  background-color: rgba(255, 176, 189, 0.4);
+  }
+  
+  .app-container{
+    padding: 5vh 0;
+  }
+  .render-container{
+    display: flex;
+    flex-direction: column;
+    margin: 0 10vw
+  }
+  footer{
+    font-family: 'Life Savers', cursive;
+    text-align: right;
+    opacity: .8;
+    margin-right: 10vw;
+    padding-top: 5vh;
+  }
+  
+  form{
+    font-family: 'Libre Franklin', sans-serif;
+  }
+  
+  .form-control{
+    cursor: pointer;
+    font-size: 16px;
+    border-style: none;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+    border-radius: 0;
+    background-color:rgba(255, 255, 255, 0);
+  }
+  
+  .form-control:disabled{
+    border-style: none;
+    background-color: rgba(255, 255, 255, 0);
+    color: rgba(0, 0, 0, 0.6);
+  }
+  .form-control:disabled.checked{
+    text-decoration: line-through;
+  }
+  
+  .todo{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all .25s;
+  }
+  .todo > div{
+    opacity: 0;
+  }
+  .todo:hover > div{
+    opacity: 1;
+  }
+  .todo:hover{
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+  .todo > div:nth-child(2):hover{
+    cursor: pointer;
+  }
+  
+  @media screen and (min-width: 1024px){
+    .render-container{
+      margin: 0 20vw
+    }
+    .form-control{
+      font-size: 24px;
+    }
+    i{
+      font-size: 1.5rem;
+    }
+  }
