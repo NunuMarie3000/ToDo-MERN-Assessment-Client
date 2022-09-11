@@ -43,8 +43,7 @@ export default function Todo({ id, todo, getAllTodos, isCompleteOG }) {
 
   useEffect( ()=>{
     isCompleteUpdate()
-    // eslint-disable-next-line
-  }, [isComplete])
+  })
 
   return (
     <>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import Todo from './Todo'
 import axios from 'axios'
 import AddTodo from './AddTodo'
@@ -13,8 +13,8 @@ export default function RenderTodos() {
     const url = `${process.env.REACT_APP_SERVER}todos`
     try {
       const response = await axios.get(url)
-      setAllTodos(response.data)
       setSearched(response.data)
+      setAllTodos(response.data)
       setTodosLeft(howmany(response.data))
     } catch (error) {
       console.log(error.message)
@@ -30,6 +30,8 @@ export default function RenderTodos() {
     getAllTodos()
     // eslint-disable-next-line
   }, [])
+
+  useCallback(setTodosLeft, [setTodosLeft])
 
   return (
     <>

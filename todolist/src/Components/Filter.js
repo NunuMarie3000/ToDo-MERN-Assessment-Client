@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Form } from 'react-bootstrap'
 
 export default function Filter({ setSearched, allTodos, setTodosLeft }) {
@@ -7,23 +7,47 @@ export default function Filter({ setSearched, allTodos, setTodosLeft }) {
     active: false,
     done: false
   })
+  const [selection, setSelection] = useState('')
 
   const handleChange = (e) => {
-    const selection = e.target.id
-    let todos
-    if (selection === 'done') {
-      todos = allTodos.filter(todo => todo.isComplete === true)
-      setTodosLeft(allTodos.length - todos.length)
-      setSearched(todos)
-    } else if (selection === 'active') {
-      todos = allTodos.filter(todo => todo.isComplete === false)
-      setTodosLeft(todos.length)
-      setSearched(todos)
-    } else {
-      todos = allTodos
-      setSearched(todos)
-    }
+    setSelection(e.target.id)
   }
+
+  // const filter = () => {
+  //   let todos
+  //   if (selection === 'done') {
+  //     todos = allTodos.filter(todo => todo.isComplete === true)
+  //     setTodosLeft(allTodos.length - todos.length)
+  //     setSearched(todos)
+  //   } else if (selection === 'active') {
+  //     todos = allTodos.filter(todo => todo.isComplete === false)
+  //     setTodosLeft(todos.length)
+  //     setSearched(todos)
+  //   } else {
+  //     todos = allTodos
+  //     setSearched(todos)
+  //   }
+  // }
+
+  useEffect(()=>{
+    function filter(){
+      let todos
+      if (selection === 'done') {
+        todos = allTodos.filter(todo => todo.isComplete === true)
+        setTodosLeft(allTodos.length - todos.length)
+        setSearched(todos)
+      } else if (selection === 'active') {
+        todos = allTodos.filter(todo => todo.isComplete === false)
+        setTodosLeft(todos.length)
+        setSearched(todos)
+      } else {
+        todos = allTodos
+        setSearched(todos)
+      }
+    }
+    filter()
+  }, [allTodos, selection, setSearched, setTodosLeft])
+
   return (
     <div style={{ display: 'flex', justifyContent:'space-between' }}>
       <Form onChange={handleChange} style={{ display: 'flex', gap: '1rem', fontSize: '20px', fontFamily: "'Life Savers', cursive" }}>
